@@ -41,7 +41,7 @@ export default function ConferencesPage() {
   const fetchConferences = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/conferences');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/conferences`);
       if (!response.ok) {
         throw new Error('Failed to fetch conferences');
       }

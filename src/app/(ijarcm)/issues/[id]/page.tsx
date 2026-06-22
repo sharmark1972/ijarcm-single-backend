@@ -72,7 +72,7 @@ export default function IssueDetailPage() {
     const fetchData = async () => {
       try {
         // Fetch current issue
-        const issueResponse = await fetch(`/api/issues/${issueId}`);
+        const issueResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues/${issueId}`);
         const issueData = await issueResponse.json();
 
         if (issueResponse.ok) {
@@ -82,7 +82,7 @@ export default function IssueDetailPage() {
         }
 
         // Fetch all issues for navigation
-        const allIssuesResponse = await fetch('/api/issues?limit=100');
+        const allIssuesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?limit=100`);
         const allIssuesData = await allIssuesResponse.json();
         
         if (allIssuesResponse.ok) {

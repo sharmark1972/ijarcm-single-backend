@@ -282,7 +282,7 @@ export default function SubmitPaper() {
         formData.append('manuscript', submission.file);
       }
 
-      const response = await fetch('/api/papers/submit', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/papers/submit`, {
         method: 'POST',
         body: formData,
       });

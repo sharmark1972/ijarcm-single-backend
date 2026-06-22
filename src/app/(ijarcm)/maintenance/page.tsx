@@ -22,7 +22,7 @@ export default function MaintenancePage() {
     // Fetch maintenance information
     const fetchMaintenanceInfo = async () => {
       try {
-        const response = await fetch('/api/maintenance/info');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/maintenance/info`);
         if (response.ok) {
           const data = await response.json();
           setMaintenanceInfo({
@@ -44,7 +44,7 @@ export default function MaintenancePage() {
     setError('');
 
     try {
-      const response = await fetch('/api/maintenance/verify', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/maintenance/verify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

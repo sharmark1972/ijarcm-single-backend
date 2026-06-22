@@ -86,7 +86,7 @@ const SupportPage = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/support/tickets', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/support/tickets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const SupportPage = () => {
     if (!session) return;
     
     try {
-      const response = await fetch('/api/support/tickets');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/support/tickets`);
       if (response.ok) {
         const data = await response.json();
         setTickets(data.tickets || []);

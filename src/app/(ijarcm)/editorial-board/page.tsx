@@ -217,7 +217,7 @@ export default function EditorialBoardPage() {
   const fetchMembers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/editorial-board?isActive=true');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/editorial-board?isActive=true`);
       if (!response.ok) {
         throw new Error('Failed to fetch editorial board members');
       }

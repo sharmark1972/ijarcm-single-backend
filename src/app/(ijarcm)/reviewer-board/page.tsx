@@ -173,7 +173,7 @@ export default function ReviewerBoardPage() {
   const fetchMembers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/reviewer-board?isActive=true');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviewer-board?isActive=true`);
       if (!response.ok) {
         throw new Error('Failed to fetch reviewer board members');
       }
