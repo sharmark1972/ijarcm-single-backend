@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { adminFetch } from '@/lib/admin-fetch';
 import { useAuth } from '@/hooks/useAuth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -282,7 +283,7 @@ export default function SubmitPaper() {
         formData.append('manuscript', submission.file);
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/papers/submit`, {
+      const response = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/papers/submit`, {
         method: 'POST',
         body: formData,
       });
