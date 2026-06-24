@@ -86,7 +86,7 @@ const Navbar = () => {
     <>
       <nav ref={navRef} className="fixed top-0 w-full bg-white border-b border-slate-200 z-50 shadow-sm font-sans">
         {/* Top Bar - ISSN and minimal info */}
-        <div className="bg-primary text-slate-300 text-xs py-1.5 px-4 hidden sm:block">
+        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 hidden sm:block">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <span>ISSN: 2455-0116 (Print) | 2395-6410 (Online)</span>
             <div className="space-x-4">
@@ -101,7 +101,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="bg-primary text-white p-2 rounded-md">
+                <div className="bg-slate-900 text-white p-2 rounded-md">
                    <span className="font-serif font-bold text-xl tracking-wider">IJ</span>
                 </div>
                 <div className="flex flex-col">
@@ -219,7 +219,7 @@ const Navbar = () => {
                   </Link> */}
                   <a
                     href={`${process.env.NEXT_PUBLIC_ADMIN_URL}/auth/login`}
-                    className="text-sm font-medium bg-primary text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity shadow-sm"
+                    className="text-sm font-medium bg-slate-900 text-white px-4 py-2 rounded-md hover:bg-slate-800 transition-colors shadow-sm"
                   >
                     Login
                   </a>
@@ -271,7 +271,7 @@ const Navbar = () => {
                      <Link href="/auth/register" className="block w-full text-center px-4 py-2 bg-slate-900 rounded-md text-white font-medium hover:bg-slate-800">Sign Up</Link> */}
                      <a
                        href={`${process.env.NEXT_PUBLIC_ADMIN_URL}/auth/login`}
-                       className="block w-full text-center px-4 py-2 bg-primary rounded-md text-white font-medium hover:opacity-90 transition-opacity"
+                       className="block w-full text-center px-4 py-2 bg-slate-900 rounded-md text-white font-medium hover:bg-slate-800"
                      >
                        Login
                      </a>

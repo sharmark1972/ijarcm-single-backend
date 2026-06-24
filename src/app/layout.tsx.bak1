@@ -1,4 +1,4 @@
-import { Lora, Source_Sans_3 } from 'next/font/google';
+import { Inter, Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
 import { SessionProvider } from '@/components/providers/SessionProvider';
 import VisitorTrackingProvider from '@/components/providers/VisitorTrackingProvider';
@@ -11,8 +11,9 @@ import StructuredData from '@/components/StructuredData';
 import PerformanceProvider from '@/components/providers/PerformanceProvider';
 import ChatBot from '@/components/ChatBot';
 
-const lora = Lora({ subsets: ['latin'], weight: ['400', '600', '700'], style: ['normal', 'italic'], variable: '--font-lora' });
-const sourceSans = Source_Sans_3({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-source-sans' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
+const lato = Lato({ weight: ['100', '300', '400', '700', '900'], subsets: ['latin'], variable: '--font-lato' });
 
 export const metadata: Metadata = {
   title: {
@@ -92,7 +93,7 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className={`${lora.variable} ${sourceSans.variable} font-sans min-h-screen bg-white text-slate-900 antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} ${lato.variable} font-sans min-h-screen bg-white text-slate-900 antialiased`}>
         <PerformanceProvider>
           <SessionProvider>
             <VisitorTrackingProvider>

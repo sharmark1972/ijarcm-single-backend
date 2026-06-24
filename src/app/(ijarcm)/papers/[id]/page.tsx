@@ -597,7 +597,7 @@ export default function PaperDetailPage() {
 
                   <div className="mb-8">
                     <h3 className="text-lg font-serif font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">Abstract</h3>
-                    <p className="text-slate-700 leading-relaxed text-lg">{paper.abstract}</p>
+                    <div className="text-slate-700 leading-relaxed text-base" dangerouslySetInnerHTML={{ __html: paper.abstract }} />
                   </div>
 
                   {paper.keywords && Array.isArray(paper.keywords) && paper.keywords.length > 0 && (

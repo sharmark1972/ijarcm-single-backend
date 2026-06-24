@@ -173,7 +173,11 @@ export default function AdvisoryBoardPage() {
   const fetchMembers = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/advisory-board?isActive=true`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/advisory-board?isActive=true`, {
+        headers: {
+          'x-site-slug': 'ijarcm'
+        }
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch advisory board members');
       }
