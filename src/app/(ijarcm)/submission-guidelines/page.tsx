@@ -15,7 +15,7 @@ interface SubmissionGuideline {
   content: string;
   category: 'GENERAL' | 'FORMATTING' | 'SUBMISSION_PROCESS' | 'REVIEW_PROCESS' | 'PUBLICATION';
   displayOrder: number;
-  isActive: boolean;
+  isPublished: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -100,7 +100,11 @@ export default function SubmissionGuidelinesPage() {
   const fetchGuidelines = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/submission-guidelines?isActive=true`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/submission-guidelines?isActive=true`, {
+        headers: {
+          'x-site-slug': 'ijarcm'
+        }
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch submission guidelines');
       }
