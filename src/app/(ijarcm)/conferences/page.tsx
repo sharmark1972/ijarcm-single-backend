@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { adminFetch } from '@/lib/admin-fetch';
 import { Calendar, MapPin, Globe, Clock, Users, ExternalLink, Search, Filter, ChevronDown } from 'lucide-react';
 import DynamicSEO from '@/components/DynamicSEO';
 import WebsiteSchema from '@/components/schema/WebsiteSchema';
@@ -41,7 +42,7 @@ export default function ConferencesPage() {
   const fetchConferences = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/conferences`);
+      const response = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/conferences`);
       if (!response.ok) {
         throw new Error('Failed to fetch conferences');
       }

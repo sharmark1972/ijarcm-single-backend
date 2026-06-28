@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -348,7 +349,7 @@ export default function IssueDetailPage() {
                           </div>
 
                           <p className="text-slate-600 mb-4 line-clamp-2 leading-relaxed">
-                            {paper.abstract}
+                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(paper.abstract) }} />
                           </p>
 
                           <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">

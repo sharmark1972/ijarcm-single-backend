@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import DOMPurify from 'dompurify';
 import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -625,7 +626,7 @@ export default function PaperDetailPage() {
               <div className="bg-white rounded-xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Abstract</h2>
                 <p className="text-gray-700 leading-relaxed text-lg">
-                  {paper.abstract}
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(paper.abstract) }} />
                 </p>
               </div>
 

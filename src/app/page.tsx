@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -418,7 +419,10 @@ export default function HomePage() {
                           {featured.title}
                         </h3>
                         <p className="text-sm text-slate-500 italic mb-3">{featured.authors.join(', ')}</p>
-                        <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3">{featured.abstract}</p>
+                        <div
+                          className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3"
+                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(featured.abstract) }}
+                        />
                         <div className="flex items-center justify-between flex-wrap gap-3">
                           <Link
                             href={`/papers/${featured.id}`}

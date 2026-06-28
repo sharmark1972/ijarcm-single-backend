@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import Link from 'next/link';
 import { ArrowLeft, User, Mail, Calendar, FileText } from 'lucide-react';
 import DynamicSEO from '@/components/DynamicSEO';
@@ -236,7 +237,7 @@ export default function AuthorPage({ params }: { params: { name: string } }) {
                     
                     {paper.abstract && (
                       <p className="text-gray-700 mb-4 line-clamp-3">
-                        {paper.abstract}
+                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(paper.abstract || '') }} />
                       </p>
                     )}
                     

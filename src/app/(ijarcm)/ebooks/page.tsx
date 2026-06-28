@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { adminFetch } from '@/lib/admin-fetch';
 import Link from 'next/link';
 import Image from 'next/image';
 import DynamicSEO from '@/components/DynamicSEO';
@@ -67,7 +68,7 @@ export default function EbooksPage() {
         limit: '12'
       });
 
-      const response = await fetch(`/api/ebooks?${params}`);
+      const response = await adminFetch(`/api/ebooks?${params}`);
       if (response.ok) {
         const data = await response.json();
         setEbooksData(data);
