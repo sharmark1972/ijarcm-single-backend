@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { adminFetch } from '@/lib/admin-fetch';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
@@ -83,7 +84,7 @@ export default function IssuesPage() {
         params.append('volume', volumeFilter);
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?${params.toString()}`);
+      const response = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?${params.toString()}`);
       if (!response.ok) {
         throw new Error('Failed to fetch issues');
       }
@@ -116,7 +117,7 @@ export default function IssuesPage() {
 
   const fetchFilters = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?limit=100`);
+      const response = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?limit=100`);
       if (!response.ok) {
         throw new Error('Failed to fetch filters');
       }
