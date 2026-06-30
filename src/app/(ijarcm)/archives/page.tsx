@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import DOMPurify from 'dompurify';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -174,9 +175,10 @@ function ArchiveCard({ archive }: { archive: Archive }) {
                       </p>
                     )}
                     {archivePaper.paper.abstract && (
-                      <p className="text-sm text-gray-700 mb-2 line-clamp-2">
-                        {archivePaper.paper.abstract}
-                      </p>
+                      <div
+                        className="text-sm text-gray-700 mb-2 line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(archivePaper.paper.abstract) }}
+                      />
                     )}
                     <div className="flex items-center space-x-4 clear-both">
                       {archivePaper.doi && (
