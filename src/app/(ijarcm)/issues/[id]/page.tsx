@@ -5,6 +5,7 @@ import DOMPurify from 'dompurify';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { adminFetch } from '@/lib/admin-fetch';
 import {
   BookOpen,
   Calendar,
@@ -73,7 +74,7 @@ export default function IssueDetailPage() {
     const fetchData = async () => {
       try {
         // Fetch current issue
-        const issueResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues/${issueId}`);
+        const issueResponse = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues/${issueId}`);
         const issueData = await issueResponse.json();
 
         if (issueResponse.ok) {
@@ -83,11 +84,19 @@ export default function IssueDetailPage() {
         }
 
         // Fetch all issues for navigation
-        const allIssuesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?limit=100`);
+        const allIssuesResponse = await adminFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/issues?limit=100`);
         const allIssuesData = await allIssuesResponse.json();
         
         if (allIssuesResponse.ok) {
-          setAllIssues(allIssuesData.issues || []);
+          const normalizedIssues = (allIssuesData.issues || []).map((item: any) => ({
+            ...item,
+            issueNumber: item.issueNumber || item.issue,
+            publishDate: item.publishDate || item.publicationDate,
+            _count: item._count || { papers: item.paperCount || 0 },
+            papers: item.papers || [],
+          }));
+
+          setAllIssues(normalizedIssues);
         }
       } catch (err) {
         console.error('Error fetching data:', err);
